@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retinopathy Risk Prediction</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Predict Retinopathy Level</h1>
+    <form action="{{ url_for('predict') }}" method="POST">
+        <label>Age:</label>
+        <input type="text" name="Age" required><br>
+
+        <label>Gender (0 for Male, 1 for Female):</label>
+        <input type="text" name="Gender" required><br>
+
+        <label>Duration of Diabetes (years):</label>
+        <input type="text" name="Duration_of_Diabetes" required><br>
+
+        <label>Cholesterol Level:</label>
+        <input type="text" name="Cholesterol_Level" required><br>
+
+        <label>BMI:</label>
+        <input type="text" name="BMI" required><br>
+
+        <label>HbA1c:</label>
+        <input type="text" name="HbA1c" required><br>
+
+        <label>Systolic Blood Pressure:</label>
+        <input type="text" name="Systolic_BP" required><br>
+
+        <label>Diastolic Blood Pressure:</label>
+        <input type="text" name="Diastolic_BP" required><br>
+
+        <!-- Model selection -->
+        <label for="model_choice">Select Model:</label>
+        <select name="model_choice">
+            <option value="log_reg">Logistic Regression</option>
+            <option value="rf">Random Forest</option>
+            <option value="svm">SVM</option>
+        </select><br><br>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    <h2>{{ prediction_text }}</h2>
+</body>
+</html>
